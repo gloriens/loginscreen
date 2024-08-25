@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import { styled } from "@mui/material/styles";
 import {Button, Checkbox, FormControlLabel, Stack, TextField, Typography} from "@mui/material";
 import theme from "@/app/themes/theme";
-import LoginButton from "@/app/components/LoginButton";
 
 interface EmailTextBoxProps {
     MailLabel?: string;

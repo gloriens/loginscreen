@@ -77,6 +77,7 @@ const theme = createTheme({
         TabDisplayerFrameComponent: {
             styleOverrides: {
                 root: {
+
                 }
             }
         },

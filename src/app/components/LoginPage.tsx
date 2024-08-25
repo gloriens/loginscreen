@@ -2,8 +2,8 @@
 import React from 'react'
 import {styled, Box, Grid, Typography, Stack, TextField, FormControlLabel, Checkbox, Button} from "@mui/material";
 import ImageDisplayer from "@/app/components/ImageDisplayer";
-import LoginButton from "@/app/components/LoginButton";
 import EmailBox from "@/app/components/LoginForm";
+import TabDisplayer from "@/app/components/TabDisplyer";
 
 const LoginPageFrame = styled(Box, {
     name: 'LoginPageFrameComponent',
@@ -100,22 +100,20 @@ function LoginPage() {
 
                 </Grid>
 
-                <Grid item xs={6} sx={{ backgroundColor: '#f4f4f4', height: '100%', width: '100%'}}>
-                    <Stack>
-
-                    </Stack>
-                    <Typography sx={{
-                        color: 'black',
-                        top: '200px'
-
-                    }}>
-                        Burası bisiklet
-                    </Typography>
-
-                    <ImageDisplayer imageUrl={"bisiklet.png"}>
-
-                    </ImageDisplayer>
+                <Grid item xs={6} sx={{ backgroundColor: '#f4f4f4', height: '100%', width: '100%',alignItems: 'center', }}>
+                    <Box
+                        sx={{
+                            display: 'flex',               // Flexbox modelini kullanır// Dikey olarak ortalar
+                            justifyContent: 'center',      // Yatay olarak ortalar
+                            height: '72%',
+                            marginTop: "100px", // Box bileşeninin yüksekliği Grid bileşeninin yüksekliği kadar
+                            width: '100%'                  // Box bileşeninin genişliği Grid bileşeninin genişliği kadar
+                        }}
+                    >
+                        <TabDisplayer />
+                    </Box>
                 </Grid>
+
             </Grid>
         </Box>
     );
