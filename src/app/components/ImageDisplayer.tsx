@@ -6,7 +6,6 @@ interface ImageDisplayProps {
     imageUrl: string;
 }
 
-// ImageDisplayerFrameComponent'i styled fonksiyonuyla oluşturuyoruz
 const ImageDisplayerFrameComponent = styled('div')(({ theme }) => ({
     ...theme.components?.ImageDisplayerFrameComponent?.styleOverrides?.root,
 }));

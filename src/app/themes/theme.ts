@@ -31,6 +31,11 @@ declare module '@mui/material/styles' {
                 root?: React.CSSProperties;
 
             }
+        };
+        PinkyPromiseFrameComponent?:{
+            styleOverrides?: {
+                root?: React.CSSProperties;
+            }
         }
     }
 }
@@ -90,6 +95,13 @@ const theme = createTheme({
         EmailTextBoxFrameComponent:{
             styleOverrides: {
                 root: {
+                }
+            }
+        },
+        PinkyPromiseFrameComponent:{
+            styleOverrides: {
+                root: {
+
                 }
             }
         }

@@ -2,6 +2,9 @@ import React, {useEffect, useState} from 'react';
 import { styled } from "@mui/material/styles";
 import {Button, Checkbox, FormControlLabel, Stack, TextField, Typography} from "@mui/material";
 import theme from "@/app/themes/theme";
+import PinkyPromise from "@/app/components/PinkyPromise";
+import TopTexts from "@/app/components/LoginForm/LoginFormTopTexts";
+import BottomText from "@/app/components/LoginForm/LoginFormBottomTexts";
 
 interface EmailTextBoxProps {
     MailLabel?: string;
@@ -15,6 +18,7 @@ const EmailTextBoxFrameComponent = styled('div')(({ theme }) => ({
 const EmailTextBox: React.FC<EmailTextBoxProps> = ({ MailLabel,passLabel }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("") //buradaki password ve email değerlerini usetate kullanarak kullanıcının yazdığı değere setledik
+    const [pinkyPromise, setPinkyPromise] = useState(false)
     /*useEffect(() => {
         console.log("email", email);
     }, [email]);*/
@@ -23,26 +27,18 @@ const EmailTextBox: React.FC<EmailTextBoxProps> = ({ MailLabel,passLabel }) => {
         if(email === "example@hotmail.com" && password === "password123"){
             alert("Login Successful!")
         }else {
-            alert("⠀⠀⠀⠀⠀⠀⠀⢠⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⢕⠄⠀⠀\n" +
-                "⠀⠀⠀⠀⠀⠀⡠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠂⠀\n" +
-                "⠀⠀⠀⠀⠀⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡄\n" +
-                "⠀⠀⠀⠀⢠⣣⠀⠀⠀⠀⠀⠀⠀⢀⡠⣖⣂⣀⡀⠀⠀⠀⠀⠀⠀⠀⠸⢧\n" +
-                "⠀⢀⢾⠟⣯⡇⠀⠀⠀⠀⠀⠀⠀⠁⠈⣁⣀⠘⢷⣦⣄⡀⢀⢀⠀⣀⣀⣹\n" +
-                "⠀⢸⢸⠀⠈⠃⠀⠀⠀⠀⠀⠀⣰⣾⡻⣭⣭⣽⣿⣾⡽⣿⡟⣼⣾⣿⣿⡟\n" +
-                "⠀⠈⠹⣿⡏⠄⠀⠀⠀⠀⠀⠀⠁⠙⢜⠿⣿⣿⣿⣿⡧⠈⣸⣿⣿⣿⣿⡇\n" +
-                "⠀⠀⣇⠘⣃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣸⠿⠛⠋⠀⠀⢻⣿⣿⣿⡿⠀\n" +
-                "⠀⠀⠘⠤⠴⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠀⠠⠂⠀⠀⢸⣿⣿⣿⡇⠀\n" +
-                "⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⢿⡄⠀⠰⠄⠀⠀⠻⣿⣿⠇⠀\n" +
-                "⠀⠀⠀⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠈⣇⣤⡤⢄⠀⣴⣶⣿⠟⠀⠀\n" +
-                "⠀⠀⢀⠃⠀⠀⠀⠀⠀⠀⠀⠀⡔⠁⠀⡀⠀⠈⢹⣷⣿⣾⣿⣿⠏⠀⠀⠀\n" +
-                "⠀⡠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠈⢀⣠⣶⣦⣤⣤⣬⣿⣿⣿⣿⡟⠀⠀⠀⠀\n" +
-                "⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠁⠀⠀⣍⣛⣿⣿⣿⣿⡟⠠⣀⠀⠀⠀\n" +
-                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⢙⣿⣿⣿⣿⣷⣤⡀⠉⡢⠀")
+            setPinkyPromise(true)
         }
+    }
+    if (pinkyPromise){
+        return (
+            <PinkyPromise/>
+        );
     }
 
     return (
         <EmailTextBoxFrameComponent>
+            <TopTexts/>
             <TextField
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
@@ -60,7 +56,7 @@ const EmailTextBox: React.FC<EmailTextBoxProps> = ({ MailLabel,passLabel }) => {
                 label={passLabel}
                 type='email'
                 fullWidth
-                sx={{ marginBottom: '0' }} // Alt boşluk
+                sx={{ marginBottom: '0' }}
             />
             <Stack
                 direction='row'
@@ -81,10 +77,10 @@ const EmailTextBox: React.FC<EmailTextBoxProps> = ({ MailLabel,passLabel }) => {
 
             <Stack
                 direction='row'
-                alignItems='flex-start' // Butonları dikeyde ortalamak için 'center' kullanabilirsiniz
-                justifyContent='space-around' // Aralıklara eşit boşluk verir
+                alignItems='flex-start'
+                justifyContent='space-around'
                 paddingTop='40px'
-                width='80%' // Genişliği tam yaparak aralıkların düzgün görünmesini sağlar
+                width='80%'
             >
                 <Button
                     variant="contained"
@@ -116,15 +112,16 @@ const EmailTextBox: React.FC<EmailTextBoxProps> = ({ MailLabel,passLabel }) => {
                         width: '129px',
                         height: '54px',
                         '&:hover': {
-                            backgroundColor: '#f4f4f4', // Hover durumunda arka plan rengi
-                            border: '1px solid #2035c3', // Hover durumunda kenar rengi
+                            backgroundColor: '#f4f4f4',
+                            border: '1px solid #2035c3',
                         },
-                        transition: 'background-color 0.3s ease', // Renk geçiş efekti
+                        transition: 'background-color 0.3s ease',
                     }}
                 >
                     Sign Up
                 </Button>
             </Stack>
+            <BottomText/>
 
 
         </EmailTextBoxFrameComponent>

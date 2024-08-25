@@ -22,28 +22,25 @@ const TabDisplayer: React.FC = ({}) => {
             <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'space-around' }}>
                 <Tabs value={value} onChange={handleChange}>
                     <Tab label ="Home" sx={{
-                        fontSize: '20px',           // Yazı boyutu
-                                // Yazı kalınlığı
-                        color: '#5e5e5e',      // Yazı rengi (tema rengini kullanarak)
-                        textTransform: 'none'      // Büyük harf dönüşümünü kaldırır
+                        fontSize: '20px',
+                        color: '#5e5e5e',    
+                        textTransform: 'none'
                     }} />
                     <Tab label ="About Us" sx={{
-                        fontSize: '20px',           // Yazı boyutu
-                                // Yazı kalınlığı
-                        color: '#5e5e5e',      // Yazı rengi (tema rengini kullanarak)
-                        textTransform: 'none'      // Büyük harf dönüşümünü kaldırır
+                        fontSize: '20px',
+                        color: '#5e5e5e',
+                        textTransform: 'none'
                     }} />
                     <Tab label ="Blog" sx={{
-                        fontSize: '20px',           // Yazı boyutu
-                                 // Yazı kalınlığı
-                        color: '#5e5e5e',      // Yazı rengi (tema rengini kullanarak)
-                        textTransform: 'none'      // Büyük harf dönüşümünü kaldırır
+                        fontSize: '20px',
+
+                        color: '#5e5e5e',
+                        textTransform: 'none'
                     }} />
                     <Tab label ="Pricing" sx={{
-                        fontSize: '20px',           // Yazı boyutu
-                        // Yazı kalınlığı
-                        color: '#5e5e5e',      // Yazı rengi (tema rengini kullanarak)
-                        textTransform: 'none'      // Büyük harf dönüşümünü kaldırır
+                        fontSize: '20px',
+                        color: '#5e5e5e',
+                        textTransform: 'none'
                     }} />
                 </Tabs>
             </Box>
