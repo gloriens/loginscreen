@@ -1,6 +1,9 @@
 'use client'
 import React from 'react'
 import {styled, Box, Grid, Typography, Stack, TextField, FormControlLabel, Checkbox, Button} from "@mui/material";
+import ImageDisplayer from "@/app/components/ImageDisplayer";
+import LoginButton from "@/app/components/LoginButton";
+import EmailBox from "@/app/components/LoginForm";
 
 const LoginPageFrame = styled(Box, {
     name: 'LoginPageFrameComponent',
@@ -33,18 +36,17 @@ function LoginPage() {
                         backgroundColor: '#FFFFFF',
                         height: '100%',
                         width: '100%',
-                        justifyContent: 'flex-start',
-                        alignItems: 'flex-start',
+                        justifyContent: 'space-between',
+                        alignItems: 'space-between',
                         display: 'flex',
-                        paddingLeft: '110px',
-                        paddingTop: '70px',
                     }}
                 ><LoginPageFrame>
                     <Stack
                         direction='column'
-                        spacing={0}
                         alignItems='flex-start'
-                        justifyContent='flex-start'
+                        justifyContent='space-around'
+                        paddingLeft='60px'
+                        marginRight='10px'
                     >
                         <Typography fontWeight='bold' fontSize='30px' sx={{ color: '#0C31F1' }}>
                             Digital
@@ -58,85 +60,23 @@ function LoginPage() {
                         <Typography paddingTop='35px' fontSize='12px' sx={{ color: '#8843da' }}>
                             Email Section
                         </Typography>
-                        <TextField
-                            label='Email'
-                            variant='outlined'
-                            type='email'
-                            fullWidth
-                            sx={{ marginBottom: '0' }} // Alt boşluk
-                        />
-                        <TextField
-                            label='Password'
-                            variant='outlined'
-                            type='password'
-                            fullWidth
-                            sx={{ marginBottom: '16px' }} // Alt boşluk
-                        />
-                        <Stack
-                            direction='row'
-                            spacing='300px'
-                            alignItems='flex-start'
-                            justifyContent='flex-start'
-                        >
-                            <FormControlLabel control={
-                                <Checkbox/>
-                            } label={"Remember Me"}>
-                                
-                            </FormControlLabel>
-                            <Typography paddingTop='9px' sx={{ color: '#00000099' }}>
-                                Forgot Password?
-                            </Typography>
-                        </Stack>
-                        <Stack
-                            direction='row'
-                            spacing='40px'
-                            alignItems='flex-start'
-                            justifyContent='flex-start'
-                            paddingTop='40px'
-                        >
-                            <Button
-                                variant="contained"
-                                sx={{ borderRadius: '0px',
-                                    backgroundColor: '#3751FE',
-                                    width: '129px',
-                                    height: '54px',
-                                    '&:hover': {
-                                        backgroundColor: '#2a389c', // Hover durumunda arka plan rengi
-                                        border: '1px solid #2035c3', // Hover durumunda kenar rengi
-                                    },
-                                    transition: 'background-color 0.3s ease', // Renk geçiş efekti
-                                }} // Kenarları 12px yuvarlatır
-                            >
-                                Login
-                            </Button>
 
-                            <Button
-                                variant="contained"
-                                sx={{ borderRadius: '0px',
-                                    backgroundColor: '#ffffff',
-                                    color: '#3751FE',
-                                    borderColor: '#3751FE',
-                                    border: '1px solid',
-                                    width: '129px',
-                                    height: '54px',
-                                    '&:hover': {
-                                        backgroundColor: '#f4f4f4', // Hover durumunda arka plan rengi
-                                        border: '1px solid #2035c3', // Hover durumunda kenar rengi
-                                    },
-                                    transition: 'background-color 0.3s ease', // Renk geçiş efekti
-                                }} // Kenarları 12px yuvarlatır
-                            >
-                                Sign Up
-                            </Button>
-                        </Stack>
+
+                        <EmailBox MailLabel={'E-mail'} passLabel={'Password'}></EmailBox>
+
+
+
+
+
                         <Stack
                             direction='row'
-                            spacing='60px'
                             alignItems='flex-start'
-                            justifyContent='flex-start'
+                            justifyContent='space-between'
+                            display='flex'
                             paddingTop='70px'
+                            width='100%'
                         >
-                            <Typography fontSize='18px' sx={{ color: '#00000099' }}>
+                            <Typography fontSize='18px' marginLeft='0px' sx={{ color: '#00000099' }}>
                                 Or Login With
                             </Typography>
                             <Typography fontWeight='bold' fontSize='18px' sx={{ color: '#3751FE' }}>
@@ -145,7 +85,7 @@ function LoginPage() {
                             <Typography fontWeight='bold' fontSize='18px' sx={{ color: '#3751FE' }}>
                                 Linkedln
                             </Typography>
-                            <Typography fontWeight='bold' fontSize='18px' sx={{ color: '#3751FE' }}>
+                            <Typography fontWeight='bold' fontSize='18px' marginRight='25px' sx={{ color: '#3751FE' }}>
                                 Google
                             </Typography>
 
@@ -154,9 +94,16 @@ function LoginPage() {
 
                     </Stack>
                     </LoginPageFrame>
+
+
+                    {/* ***************************************** BİSİKLET KISMI ************************************************ */}
+
                 </Grid>
 
                 <Grid item xs={6} sx={{ backgroundColor: '#f4f4f4', height: '100%', width: '100%'}}>
+                    <Stack>
+
+                    </Stack>
                     <Typography sx={{
                         color: 'black',
                         top: '200px'
@@ -164,6 +111,10 @@ function LoginPage() {
                     }}>
                         Burası bisiklet
                     </Typography>
+
+                    <ImageDisplayer imageUrl={"bisiklet.png"}>
+
+                    </ImageDisplayer>
                 </Grid>
             </Grid>
         </Box>

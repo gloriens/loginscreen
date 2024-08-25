@@ -5,14 +5,13 @@ import LoginPage from "@/app/components/LoginPage";
 
 export default function Home() {
   return (
-   <Container maxWidth={false} sx={{
+   <Container sx={{
        display: 'flex',
        justifyContent: 'center', // Yatayda ortalama
        alignItems: 'center', // Dikeyde ortalama
        height: '100vh',
-       width: '150*vw',
+       width: '100vw',
        backgroundColor: "#e5e5e5",
-       border: '2px solid green'
    }}>
            <LoginPage/>
 
