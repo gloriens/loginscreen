@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { styled } from "@mui/material/styles";
 import {Typography, Button, Box} from "@mui/material";
 import ImageDisplayer from "@/app/components/ImageDisplayer";
+import {Context} from "@/app/components/LoginPage";
 
 const PinkyPromiseFrameComponent = styled('div')(({ theme }) => ({
     ...theme.components?.PinkyPromiseFrameComponent?.styleOverrides?.root,
     textAlign: 'center',
     padding: '20px',
 }));
+
+
 
 const FollowCursorImage = styled('img')(({ theme }) => ({
     position: 'absolute',
@@ -17,6 +20,18 @@ const FollowCursorImage = styled('img')(({ theme }) => ({
 
 const PinkyPromise: React.FC = () => {
     const [mousePos, setMousePos] = useState({x: 0, y: 0})
+    const context = useContext(Context);
+
+    if (!context) {
+        throw new Error("Context is not provided");
+    }
+    const { loggedIn, setLoggedIn } = context;
+
+    const handleLogin = () => {
+            setLoggedIn(true);
+
+    };
+
     useEffect(() => {
         const mousePosition = (event: MouseEvent) =>{
             setMousePos({x: event.clientX,y: event.clientY}) //farenin konumunu aldığın yer
@@ -39,7 +54,7 @@ const PinkyPromise: React.FC = () => {
                 We Turst you Glorien!
             </Typography>
             <Box paddingTop={"50px"}
-                onClick={() => window.location.reload()}
+                onClick={() => {handleLogin()}}
 
                 sx={{
                     width: '220px', height: '260px', marginTop: "25px"
