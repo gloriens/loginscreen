@@ -1,6 +1,21 @@
 'use client'
-import React from 'react'
-import {styled, Box, Grid, Typography, Stack, TextField, FormControlLabel, Checkbox, Button} from "@mui/material";
+import React, {useState} from 'react'
+import { useContext } from 'react';
+import {
+    styled,
+    Box,
+    Grid,
+    Typography,
+    Stack,
+    TextField,
+    FormControlLabel,
+    Checkbox,
+    Button,
+    Hidden
+} from "@mui/material";
+import ImageDisplayer from "@/app/components/ImageDisplayer";
+import EmailBox from "@/app/components/LoginForm/LoginForm";
+import TabDisplayer from "@/app/components/TabDisplyer";
 
 const LoginPageFrame = styled(Box, {
     name: 'LoginPageFrameComponent',
@@ -13,162 +28,81 @@ const LoginPageFrame = styled(Box, {
     gap: 10,
 }));
 
+export const Context = React.createContext<{
+    loggedIn: boolean;
+    setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+} | null>(null);
+
+
 function LoginPage() {
+    const [loggedIn, setLoggedIn] = useState(false);
+
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'center', // Yatayda ortalama
-                alignItems: 'center', // Dikeyde ortalama
-                height: '92vh',
-                width: '80vw',
-                backgroundColor: 'white',
-            }}
-        >
-            <Grid container spacing={0} style={{ height: '100%' }}>
-                <Grid
-                    item
-                    xs={6}
-                    sx={{
-                        backgroundColor: '#FFFFFF',
-                        height: '100%',
-                        width: '100%',
-                        justifyContent: 'flex-start',
-                        alignItems: 'flex-start',
-                        display: 'flex',
-                        paddingLeft: '110px',
-                        paddingTop: '70px',
-                    }}
-                ><LoginPageFrame>
-                    <Stack
-                        direction='column'
-                        spacing={0}
-                        alignItems='flex-start'
-                        justifyContent='flex-start'
-                    >
-                        <Typography fontWeight='bold' fontSize='30px' sx={{ color: '#0C31F1' }}>
-                            Digital
-                        </Typography>
-                        <Typography fontWeight='bold' fontSize='36px' paddingTop='80px' sx={{ color: '#0C31F1' }}>
-                            Artificial Intelligence Driving Results For The Travel Industry
-                        </Typography>
-                        <Typography paddingTop='25px' sx={{ color: '#00000099' }}>
-                            Welcome back! Please login to your account.
-                        </Typography>
-                        <Typography paddingTop='35px' fontSize='12px' sx={{ color: '#8843da' }}>
-                            Email Section
-                        </Typography>
-                        <TextField
-                            label='Email'
-                            variant='outlined'
-                            type='email'
-                            fullWidth
-                            sx={{ marginBottom: '0' }} // Alt boşluk
-                        />
-                        <TextField
-                            label='Password'
-                            variant='outlined'
-                            type='password'
-                            fullWidth
-                            sx={{ marginBottom: '16px' }} // Alt boşluk
-                        />
-                        <Stack
-                            direction='row'
-                            spacing='300px'
-                            alignItems='flex-start'
-                            justifyContent='flex-start'
+        <Context.Provider value={{ loggedIn, setLoggedIn }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '92vh',
+                    width: '80vw',
+                    backgroundColor: 'white',
+                }}
+            >
+                {/* loggedIn true ise "Login Successful" mesajı gösterilecek */}
+
+                {loggedIn ? (
+                    <Typography variant="h4">Login Successful!</Typography>) : ( //{loggedIn(booleanın olduğu yer)
+                                                                                 //Yapı şu şekilde => {loggedIn? ("true ise gösterilecek yer") : ("False ise gösterilecek yer)
+
+                    <Grid container spacing={0} style={{ height: '100%' }}>
+                        <Grid
+                            item
+                            xs={12} md={8} lg={6}
+                            sx={{
+                                backgroundColor: '#FFFFFF',
+                                height: '100%',
+                                width: '100%',
+                                justifyContent: 'space-between',
+                                alignItems: 'space-between',
+                                display: 'flex',
+                            }}
                         >
-                            <FormControlLabel control={
-                                <Checkbox/>
-                            } label={"Remember Me"}>
-                                
-                            </FormControlLabel>
-                            <Typography paddingTop='9px' sx={{ color: '#00000099' }}>
-                                Forgot Password?
-                            </Typography>
-                        </Stack>
-                        <Stack
-                            direction='row'
-                            spacing='40px'
-                            alignItems='flex-start'
-                            justifyContent='flex-start'
-                            paddingTop='40px'
-                        >
-                            <Button
-                                variant="contained"
-                                sx={{ borderRadius: '0px',
-                                    backgroundColor: '#3751FE',
-                                    width: '129px',
-                                    height: '54px',
-                                    '&:hover': {
-                                        backgroundColor: '#2a389c', // Hover durumunda arka plan rengi
-                                        border: '1px solid #2035c3', // Hover durumunda kenar rengi
-                                    },
-                                    transition: 'background-color 0.3s ease', // Renk geçiş efekti
-                                }} // Kenarları 12px yuvarlatır
-                            >
-                                Login
-                            </Button>
-
-                            <Button
-                                variant="contained"
-                                sx={{ borderRadius: '0px',
-                                    backgroundColor: '#ffffff',
-                                    color: '#3751FE',
-                                    borderColor: '#3751FE',
-                                    border: '1px solid',
-                                    width: '129px',
-                                    height: '54px',
-                                    '&:hover': {
-                                        backgroundColor: '#f4f4f4', // Hover durumunda arka plan rengi
-                                        border: '1px solid #2035c3', // Hover durumunda kenar rengi
-                                    },
-                                    transition: 'background-color 0.3s ease', // Renk geçiş efekti
-                                }} // Kenarları 12px yuvarlatır
-                            >
-                                Sign Up
-                            </Button>
-                        </Stack>
-                        <Stack
-                            direction='row'
-                            spacing='60px'
-                            alignItems='flex-start'
-                            justifyContent='flex-start'
-                            paddingTop='70px'
-                        >
-                            <Typography fontSize='18px' sx={{ color: '#00000099' }}>
-                                Or Login With
-                            </Typography>
-                            <Typography fontWeight='bold' fontSize='18px' sx={{ color: '#3751FE' }}>
-                                Facebook
-                            </Typography>
-                            <Typography fontWeight='bold' fontSize='18px' sx={{ color: '#3751FE' }}>
-                                Linkedln
-                            </Typography>
-                            <Typography fontWeight='bold' fontSize='18px' sx={{ color: '#3751FE' }}>
-                                Google
-                            </Typography>
-
-
-                        </Stack>
-
-                    </Stack>
-                    </LoginPageFrame>
-                </Grid>
-
-                <Grid item xs={6} sx={{ backgroundColor: '#f4f4f4', height: '100%', width: '100%'}}>
-                    <Typography sx={{
-                        color: 'black',
-                        top: '200px'
-
-                    }}>
-                        Burası bisiklet
-                    </Typography>
-                </Grid>
-            </Grid>
-        </Box>
+                            <LoginPageFrame>
+                                <Stack
+                                    direction='column'
+                                    alignItems='flex-start'
+                                    justifyContent='space-around'
+                                    paddingLeft='60px'
+                                    marginRight='10px'
+                                >
+                                    <EmailBox MailLabel={'Username'} passLabel={'Password'} />
+                                </Stack>
+                            </LoginPageFrame>
+                        </Grid>
+                        <Hidden lgDown={true}>
+                            <Grid item lg={6} sx={{ backgroundColor: '#f4f4f4', height: '100%', width: '100%', alignItems: 'center' }}>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        height: '72%',
+                                        marginTop: "100px",
+                                        width: '100%'
+                                    }}
+                                >
+                                    <TabDisplayer />
+                                </Box>
+                            </Grid>
+                        </Hidden>
+                    </Grid>
+                )}
+            </Box>
+        </Context.Provider>
     );
 }
+
+
 
 
 

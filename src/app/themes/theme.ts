@@ -6,7 +6,37 @@ import { green, purple, blue, } from '@mui/material/colors';
 
 declare module '@mui/material/styles' {
     interface Components {
-        LoginPageFrameComponent: {};
+        LoginPageFrameComponent?: {
+            styleOverrides?: {
+                root?: React.CSSProperties;
+            };
+        };
+        ImageDisplayerFrameComponent?: {
+            styleOverrides?: {
+                root?: React.CSSProperties;
+            };
+        };
+        TabDisplayerFrameComponent?: {
+            styleOverrides?: {
+                root?: React.CSSProperties;
+            }
+        };
+        LoginButtonFrameComponent?: {
+            styleOverrides?: {
+                root?: React.CSSProperties;
+            }
+        };
+        EmailTextBoxFrameComponent?:{
+            styleOverrides?: {
+                root?: React.CSSProperties;
+
+            }
+        };
+        PinkyPromiseFrameComponent?:{
+            styleOverrides?: {
+                root?: React.CSSProperties;
+            }
+        }
     }
 }
 
@@ -41,6 +71,39 @@ const theme = createTheme({
                 }
             }
 
+        },
+        ImageDisplayerFrameComponent:{
+            styleOverrides: {
+                root: {
+
+                }
+            }
+        },
+        TabDisplayerFrameComponent: {
+            styleOverrides: {
+                root: {
+
+                }
+            }
+        },
+        LoginButtonFrameComponent: {
+            styleOverrides: {
+                root: {
+                }
+            }
+        },
+        EmailTextBoxFrameComponent:{
+            styleOverrides: {
+                root: {
+                }
+            }
+        },
+        PinkyPromiseFrameComponent:{
+            styleOverrides: {
+                root: {
+
+                }
+            }
         }
     }
 });
