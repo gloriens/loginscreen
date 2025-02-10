@@ -5,7 +5,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import theme from "./themes/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from '@mui/material';
-import { Head } from "next/document"; // Head bileşenini ekle
+import { Head } from "next/head"; // Head import edildi
 
 // Google fontları burada import ediyoruz
 const inter = Inter({ subsets: ["latin"] });
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
 export default function RootLayout(props: { children: React.ReactNode }) {
     return (
         <html lang="en">
+        <body className={inter.className}> {/* Burada Inter fontunu body'ye uygula */}
+        {/* Head kullanarak meta bilgileri ekleyebilirsiniz */}
         <Head>
-            {/* Geist fontunu burada manuel olarak ekleyebilirsin, eğer kullanıyorsan */}
             <link href="https://fonts.googleapis.com/css2?family=Geist&display=swap" rel="stylesheet" />
         </Head>
-        <body className={inter.className}> {/* Burada Inter fontunu body'ye uygula */}
         <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
