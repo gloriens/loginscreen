@@ -5,7 +5,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import theme from "./themes/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from '@mui/material';
-import { Head } from "next/head"; // Head import edildi
+import Head from "next/head"; // Doğru import: Head, direkt olarak default import edilmelidir
 
 // Google fontları burada import ediyoruz
 const inter = Inter({ subsets: ["latin"] });
@@ -33,6 +33,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         </html>
     );
 }
+
 
 //slider --> içinde image ler var
 //slider hazırlandı, slider bir component, image de bir component
