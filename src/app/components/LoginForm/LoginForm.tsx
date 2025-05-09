@@ -36,8 +36,9 @@ const EmailTextBox: React.FC<EmailTextBoxProps> = ({ MailLabel, passLabel }) => 
     };
 
     if (pinkyPromise) {
-        return <PinkyPromise />;
+        return <PinkyPromise email={email} />;
     }
+
 
     return (
         <EmailTextBoxFrameComponent>
